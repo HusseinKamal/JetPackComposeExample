@@ -12,17 +12,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
+import com.hussein.jetpackcomposeexample.navigation.SetupNavGraph
 import com.hussein.jetpackcomposeexample.ui.theme.JetPackComposeExampleTheme
 import com.hussein.jetpackcomposeexample.viewmodel.SplashViewModel
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel: SplashViewModel by viewModels()
+    //private val viewModel: SplashViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splashScreen = installSplashScreen()
+        //val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
-        splashScreen.setKeepOnScreenCondition{viewModel.isLoading.value}
+        //splashScreen.setKeepOnScreenCondition{viewModel.isLoading.value}
 
         setContent {
             JetPackComposeExampleTheme {
@@ -31,7 +33,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    val navController = rememberNavController()
+                    SetupNavGraph(navHostController = navController)
                 }
             }
         }
