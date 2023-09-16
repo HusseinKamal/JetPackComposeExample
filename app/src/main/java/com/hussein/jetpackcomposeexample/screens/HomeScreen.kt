@@ -5,12 +5,13 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
-import androidx.compose.material.LocalContentColor
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
-import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -36,7 +37,10 @@ fun BottomBar(navController: NavHostController) {
 
     val bottomBarDestination = screens.any { it.route == currentDestination?.route }
     if (bottomBarDestination) {
-        BottomNavigation {
+        BottomNavigation(
+            backgroundColor = MaterialTheme.colorScheme.primary,
+            elevation = 2.dp
+        ) {
             screens.forEach { screen ->
                 AddItem(
                     screen = screen,
@@ -54,9 +58,13 @@ fun RowScope.AddItem(
     currentDestination: NavDestination?,
     navController: NavHostController
 ) {
+    val backStackEntry = navController.currentBackStackEntryAsState()
+    val currentRoute = backStackEntry.value?.destination?.route;
+    val selected = currentRoute == screen.route
+
     BottomNavigationItem(
         label = {
-            Text(text = screen.title)
+            Text(text = screen.title, color = if(selected)  Color.White else Color.White.copy(alpha = ContentAlpha.disabled))
         },
         icon = {
             Icon(
@@ -64,10 +72,12 @@ fun RowScope.AddItem(
                 contentDescription = "Navigation Icon"
             )
         },
-        selected = currentDestination?.hierarchy?.any {
+        selected = selected,
+       /* selected = currentDestination?.hierarchy?.any {
             it.route == screen.route
-        } == true,
-        unselectedContentColor = LocalContentColor.current.copy(alpha = ContentAlpha.disabled),
+        } == true,*/
+        selectedContentColor =  Color.White,
+        unselectedContentColor = Color.White.copy(alpha = ContentAlpha.disabled),
         onClick = {
             navController.navigate(screen.route) {
                 popUpTo(navController.graph.findStartDestination().id)
