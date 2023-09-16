@@ -3,20 +3,21 @@ package com.hussein.jetpackcomposeexample
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ExperimentalComposeApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
 import com.hussein.jetpackcomposeexample.navigation.SetupNavGraph
 import com.hussein.jetpackcomposeexample.ui.theme.JetPackComposeExampleTheme
-import com.hussein.jetpackcomposeexample.viewmodel.SplashViewModel
 
+@ExperimentalComposeApi
+@ExperimentalMaterial3Api
 class MainActivity : ComponentActivity() {
 
     //private val viewModel: SplashViewModel by viewModels()
@@ -25,16 +26,37 @@ class MainActivity : ComponentActivity() {
         //val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
         //splashScreen.setKeepOnScreenCondition{viewModel.isLoading.value}
-
         setContent {
+            val navController = rememberNavController()
             JetPackComposeExampleTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val navController = rememberNavController()
-                    SetupNavGraph(navHostController = navController)
+                    SetupNavGraph(navController)
+                   /* Scaffold(
+                        bottomBar = {
+                            BottomAppBar(modifier = Modifier) {
+                                BottomNavigationBar(navController = navController)
+                            }
+                        },
+                    ) { innerPadding ->
+                        Box(
+                            modifier = Modifier.padding(
+                                PaddingValues(
+                                    0.dp,
+                                    0.dp,
+                                    0.dp,
+                                    innerPadding.calculateBottomPadding()
+                                )
+                            )
+                        ) {
+                            NavHost(navController, startDestination = Screen.Home.HomeTab.route) {
+                                Navigations(navController = navController)
+                            }
+                        }
+                    }*/
                 }
             }
         }

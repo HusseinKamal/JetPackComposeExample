@@ -2,10 +2,11 @@
 <resources>
 
     <style name="Theme.JetPackComposeExample" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:windowDisablePreview">true</item> <!-- Remove white screen before splash -->
+        <item name="android:windowDisablePreview">true
+        </item> <!-- Remove white screen before splash -->
     </style>
 
-   <!-- <style name="Theme.OnBoardingCompose" parent="android:Theme.Material.Light.NoActionBar">
+    <!-- <style name="Theme.OnBoardingCompose" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/purple_500</item>
     </style>
 

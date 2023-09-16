@@ -18,6 +18,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.hussein.jetpackcomposeexample.R
+import com.hussein.jetpackcomposeexample.util.Routes
 
 @Composable
 fun SplashScreen(navController: NavHostController) {
@@ -38,8 +39,10 @@ fun SplashScreen(navController: NavHostController) {
             {
                 isPlaying = true
             }
-            else if(logoAnimationState.progress == 1f){
+            else if(logoAnimationState.progress >= 1f){
                 isPlaying = false
+                navController.popBackStack()
+                navController.navigate(Routes.HOME_ROUTE)
             }
         }
 
@@ -47,12 +50,14 @@ fun SplashScreen(navController: NavHostController) {
             composition = composition,
             progress = { logoAnimationState.progress },
         )
-        if (!isPlaying) { //progress mean number of iterations has been done
-            navController.navigate(Screen.Home.route){
+        /*if (!isPlaying) { //progress mean number of iterations has been done
+            navController.navigate(BottomBarRootNavigationScreen.Home.route){
                 popUpTo(navController.graph.id){//This for remove any back stack or previous pages
                     inclusive = false
+                    saveState = false
+
                 }
             }
-        }
+        }*/
     }
 }
