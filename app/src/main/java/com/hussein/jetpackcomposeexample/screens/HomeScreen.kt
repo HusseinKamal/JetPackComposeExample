@@ -16,7 +16,9 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.paging.ExperimentalPagingApi
 import com.hussein.jetpackcomposeexample.navigation.HomeNavGraph
+@ExperimentalPagingApi
 @Composable
 fun HomeRootNavigationScreen(navController: NavHostController = rememberNavController()) {
     androidx.compose.material.Scaffold(

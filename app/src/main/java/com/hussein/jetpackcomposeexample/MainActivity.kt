@@ -3,6 +3,7 @@ package com.hussein.jetpackcomposeexample
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -13,11 +14,16 @@ import androidx.compose.runtime.ExperimentalComposeApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import androidx.paging.ExperimentalPagingApi
+import coil.annotation.ExperimentalCoilApi
 import com.hussein.jetpackcomposeexample.navigation.SetupNavGraph
 import com.hussein.jetpackcomposeexample.ui.theme.JetPackComposeExampleTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 @ExperimentalComposeApi
 @ExperimentalMaterial3Api
+@ExperimentalPagingApi
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     //private val viewModel: SplashViewModel by viewModels()

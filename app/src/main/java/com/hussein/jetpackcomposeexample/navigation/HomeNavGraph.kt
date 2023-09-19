@@ -4,11 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.paging.ExperimentalPagingApi
 import com.hussein.jetpackcomposeexample.screens.BottomBarRootNavigationScreen
 import com.hussein.jetpackcomposeexample.screens.HomeTab
 import com.hussein.jetpackcomposeexample.screens.Profile
 import com.hussein.jetpackcomposeexample.util.Routes
 
+@ExperimentalPagingApi
 @Composable
 fun HomeNavGraph(navController: NavHostController) {
     NavHost(

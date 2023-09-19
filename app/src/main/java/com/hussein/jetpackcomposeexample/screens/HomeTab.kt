@@ -1,28 +1,58 @@
 package com.hussein.jetpackcomposeexample.screens
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.compose.collectAsLazyPagingItems
+import coil.annotation.ExperimentalCoilApi
+import com.hussein.jetpackcomposeexample.viewmodel.HomeViewModel
+
+@ExperimentalCoilApi
+@ExperimentalPagingApi
+@Composable
+fun HomeTab(navHostController: NavHostController, homeViewModel: HomeViewModel = hiltViewModel()) {
+    val getAllProducts = homeViewModel.getAllProducts.collectAsLazyPagingItems()
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    androidx.compose.material.Text(
+                        text = "Home",
+                        color = Color.White
+                    )
+                },
+                backgroundColor = androidx.compose.material3.MaterialTheme.colorScheme.primary,
+            )
+        },
+        content = {padding ->
+            Column(
+                modifier = Modifier
+                    .padding(padding)){
+                ListContent(items = getAllProducts)
+            }
+        }
+    )
+}
 
 @Composable
-fun HomeTab(navHostController: NavHostController){
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.Blue), contentAlignment = Alignment.Center){
-        Text(
-            text = "Home",
-            fontSize = MaterialTheme.typography.titleMedium.fontSize,
-            fontWeight = FontWeight.Bold,
-            color = Color.White
-        )
-    }
+@Preview
+fun HomeTopBarPreview() {
+    TopAppBar(
+        title = {
+            androidx.compose.material.Text(
+                text = "Home",
+                color = MaterialTheme.colors.primary
+            )
+        },
+        backgroundColor = MaterialTheme.colors.primary,
+    )
 }

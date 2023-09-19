@@ -4,9 +4,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.paging.ExperimentalPagingApi
 import com.hussein.jetpackcomposeexample.screens.HomeRootNavigationScreen
 import com.hussein.jetpackcomposeexample.util.Routes
 
+@ExperimentalPagingApi
 @Composable
 fun SetupNavGraph(navHostController: NavHostController){
     NavHost(
