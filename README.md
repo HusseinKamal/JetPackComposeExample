@@ -12,7 +12,7 @@ This is JetpackCompose example app with MVVM,Retrofit,Coroutines,RoomDB and Hilt
 
 3- Home Screen with bottom navigation bar with Home Tab and Profile Tab
 
-![ProfileScreenShot](https://github.com/HusseinKamal/JetPackComposeExample/assets/29864161/780f7d49-4d7a-4ec2-a5d5-cc4fe586b797)
+![ProfileScreenShot](https://github.com/HusseinKamal/JetPackComposeExample/assets/29864161/8391ba1a-db2d-4db1-835b-f22af76d620a)
 
 
 4- Home Tab has lazy column of products
