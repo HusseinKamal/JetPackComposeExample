@@ -2,9 +2,9 @@ package com.hussein.jetpackcomposeexample.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,7 +30,7 @@ fun HomeTab(navHostController: NavHostController, homeViewModel: HomeViewModel =
                         color = Color.White
                     )
                 },
-                backgroundColor = androidx.compose.material3.MaterialTheme.colorScheme.primary,
+                backgroundColor = MaterialTheme.colorScheme.primary,
             )
         },
         content = {padding ->
@@ -50,9 +50,9 @@ fun HomeTopBarPreview() {
         title = {
             androidx.compose.material.Text(
                 text = "Home",
-                color = MaterialTheme.colors.primary
+                color = MaterialTheme.colorScheme.primary
             )
         },
-        backgroundColor = MaterialTheme.colors.primary,
+        backgroundColor = MaterialTheme.colorScheme.primary,
     )
 }
