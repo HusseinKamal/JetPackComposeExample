@@ -1,5 +1,5 @@
 # JetPackComposeExample
-This is JetpackCompose example app with MVVM,Retrofit,Coroutines,RoomDB and Hilt Dagger plugin
+This is JetpackCompose example app with MVVM,Retrofit,Coroutines,RoomDB,Paging and Hilt Dagger plugin
 
 1- App has many composable screens
 
@@ -12,7 +12,8 @@ This is JetpackCompose example app with MVVM,Retrofit,Coroutines,RoomDB and Hilt
 
 3- Home Screen with bottom navigation bar with Home Tab and Profile Tab
 
-![ProfileScreenShot](https://github.com/HusseinKamal/JetPackComposeExample/assets/29864161/8391ba1a-db2d-4db1-835b-f22af76d620a)
+![profile](https://github.com/HusseinKamal/JetPackComposeExample/assets/29864161/2dc120c5-3d23-4a2f-ad6f-fa81e2efc91b)
+
 
 
 4- Home Tab has lazy column of products
