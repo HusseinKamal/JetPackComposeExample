@@ -5,7 +5,7 @@ import retrofit2.http.GET
 
 interface ProductAPI{
 
-    @GET("/photos")
+    @GET("/products")
     suspend fun getAllProducts():Product
 
 }

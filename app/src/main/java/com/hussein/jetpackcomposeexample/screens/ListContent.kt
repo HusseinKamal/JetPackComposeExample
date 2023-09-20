@@ -65,8 +65,8 @@ fun ProductItem(product: ProductX){
         model = ImageRequest.Builder(context)
             .data(product.images[0])
             .crossfade(true)
-            .placeholder(R.drawable.ic_launcher_background)
-            .error(R.drawable.ic_launcher_background)
+            .placeholder(R.drawable.placeholder)
+            .error(R.drawable.placeholder)
             .build(),
     )
 
@@ -74,7 +74,7 @@ fun ProductItem(product: ProductX){
         .height(300.dp)
         .fillMaxWidth(), contentAlignment = Alignment.BottomCenter){
 
-        Image(modifier = Modifier.fillMaxSize(),painter = painter, contentScale = ContentScale.Crop, contentDescription = "Unspalsh Image")
+        Image(modifier = Modifier.fillMaxSize(),painter = painter, contentScale = ContentScale.FillBounds, contentDescription = "Product Image")
 
         Surface(
             modifier = Modifier
@@ -91,11 +91,9 @@ fun ProductItem(product: ProductX){
             horizontalArrangement = Arrangement.SpaceBetween
         ){
             Text(text = buildAnnotatedString {
-                append("Name ")
                 withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
                     append(product.title)
                 }
-                append(" Price")
             },
                 color=Color.White,
                 maxLines = 1,
@@ -119,7 +117,7 @@ fun LikeCounter(modifier: Modifier,painter: Painter,likes:String){
         horizontalArrangement = Arrangement.End
     ){
         Icon(painter = painter, contentDescription = "Like Icon", tint = Color.Red)
-        Divider(Modifier.width(6.dp))
+        Divider(Modifier.width(2.dp))
         Text(
             text = likes,
             color = Color.White,
